@@ -27,7 +27,72 @@
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
+
+	.pages {
+		width : 300px;
+		padding:40px;
+		-webkit-box-shadow: 8px 8px 40px 1px rgba(0, 0, 0, 0.5);
+		-moz-box-shadow: 8px 8px 40px 1px rgba(0, 0, 0, 0.5);
+		box-shadow: 8px 8px 40px 1px rgba(0, 0, 0, 0.5);
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+	}
+	.pages .items {
+		min-height:300px;
+	}
+	.pages .items .item {
+		display:none;
+	}
+	
+	.pages .items .item.current{
+		display:block;
+	}
+	
+	.pages .navigation {
+		margin-top:40px;
+	}
+	.pages .navigation .nav .current {
+		border : 1px solid red;
+	}
+	
+	.pages .navigation .nav{
+		float:left;
+		width:30px;
+		height:30px;
+	}
+	.pages .navigation .prev {
+		float:left;
+		margin-right:10px;
+	}
+	.pages .navigation .next{
+		float :right;
+	}
+	.pages .navigation .prev, .pages .navigation .next {
+		width:20px;
+		height:20px;
+		font-weight:bold;
+		font-size:10px;
+		cursor:pointer;
+	}
+	.clear{
+		clear:both;
+		height:0px;
+	}
+	
   </style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="js/Jquery-Pagination-Plugin/jquery.pagination.js"></script>
+	<script type="text/javascript">
+		(function($){
+			$(document).ready(function(){
+				$('.pages').pagination({
+					countOnPage : 1,
+					countNavigationItems:8
+				});
+			});
+		})(jQuery)
+	</script>
 </head>
 
 <body>
@@ -48,16 +113,33 @@
     <div class="description">
       organize the management of pagination
     </div>
+	<h2>example</h2>
+	<div class="pages">
+			<div class="items">
+				<div class="item">(1)Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+				<div class="item">(2)Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				<div class="item">(3)Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+				<div class="item">(4)Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
+				<div class="item">(5)Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+				<div class="item">(6)Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+				<div class="item">(7)Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				<div class="item">(8)Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+				<div class="item">(9)Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
+				<div class="item">(10)Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+				<div class="item">(11)Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+				<div class="item">(12)Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				<div class="item">(13)Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+				<div class="item">(14)Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
+				<div class="item">(15)Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+				<div class="item">(16)Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+			</div>
+			<div class="navigation">
+			</div>
+			<div class="clear"></div>
+	</div>
 
-    <h2>Authors</h2>
-<p>Valentine (timu@bk.ru)
-<br/>
-<br/>      </p>
-<h2>Contact</h2>
-<p>(timu@bk.ru)
-<br/>      </p>
-
-
+	<br>
+	<br>
     <h2>Download</h2>
     <p>
       You can download this project in either
@@ -72,6 +154,7 @@
     <div class="footer">
       get the source code on GitHub : <a href="http://github.com/inko/Jquery-Pagination-Plugin">inko/Jquery-Pagination-Plugin</a>
     </div>
+
 
   </div>
 
