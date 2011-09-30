@@ -1,4 +1,5 @@
 #HTML:
+``` html
 	<div class="pages">
 		<div class="items">
 			<div class="item">item1</div>
@@ -9,8 +10,10 @@
 		</div>
 		<div class="navigation">
 	</div>
+```
 	
 #CSS:
+``` css
 	.pages .items .item {
 		display:none;
 	}
@@ -32,11 +35,13 @@
 		width:30px;
 		height:30px;
 	}
-	
+``` css	
 
 #JS:
+``` JavaScript
 	(function(){
 		$(document).reay(function(){
 			$('.pages').pagination();
 		})
 	})(jQuery);
+```
