@@ -35,7 +35,7 @@
 		width:30px;
 		height:30px;
 	}
-``` css	
+```
 
 #JS:
 ``` JavaScript
