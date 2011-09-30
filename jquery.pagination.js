@@ -76,6 +76,7 @@
 	})(jQuery);
 */
 "use strict";
+"use strict";
 (function($){
 
 	// получить элементы страниц
@@ -128,6 +129,7 @@
 		return this;
 	}
 	var apiDataAttributeName = 'pagination';
+	var navigationOffest = 0;
 	$.fn.pagination = function( settings ) {
 		
 		// настройки по умолчанию
@@ -137,7 +139,8 @@
 			navigationContainerClass : 'navigation',
 			navigationItemClass : 'nav',
 			currentClass : 'current',
-			countOnPage : 3
+			countOnPage : 3,
+			countNavigationItems:7
 		};
 		var settings = $.extend( defaults, settings );
 
@@ -149,12 +152,17 @@
 			var pagesCount = getPagesCount( pagesItemsCount, settings.countOnPage );
 			
 			// отобразить навигацию
+			
+			$container.find('.'+settings.navigationContainerClass).append('<div class="prev">&lt;&lt;</div>');
 			for( var index=1; index<=pagesCount; index++ ) {
 				var firstClass = (index == 1 ) ? settings.currentClass : '';
 				$container.find('.'+settings.navigationContainerClass).append('<div class="'+firstClass+' '+settings.navigationItemClass+'"><a href="#">'+index+'</a></div>');
 			}
+			$container.find('.'+settings.navigationContainerClass).append('<div class="next">&gt;&gt;</div>');
 			var $navigationItems  = getNavigationItems( $container, settings.navigationContainerClass, settings.navigationItemClass );
-			
+			for( var index=(settings.countNavigationItems); index<$navigationItems.length; index++) {
+				$navigationItems.eq(index).hide();
+			}
 			for( var index=0; index<settings.countOnPage; index++ ) {
 				$pageItems.eq(index).addClass( settings.currentClass );
 			}
@@ -166,6 +174,7 @@
 				event.preventDefault();
 				var $navigationItem = $(this);
 				var position = $navigationItem.index();
+				
 				var $pageItems  = getPagesItems( $container, settings.itemsContainerClass, settings.itemClass );
 				var $navigationItems  = getNavigationItems( $container, settings.navigationContainerClass, settings.navigationItemClass );
 				
@@ -174,13 +183,35 @@
 				var endIndex = ( position == 0  ) ? ( settings.countOnPage - 1 ) : ( position * settings.countOnPage + ( settings.countOnPage - 1 ) );
 
 				var startIndex = ( position == 0  ) ? 0 : ( position * settings.countOnPage  );
+				// console.info(startIndex, endIndex)
 				for( var i = startIndex; i<=endIndex; i++){
-					$pageItems.eq(i).addClass(settings.currentClass);
+					$pageItems.eq(i-1).addClass(settings.currentClass);
 				}
 				
 				$navigationItems.filter( '.'+settings.currentClass).removeClass(settings.currentClass);
 				$navigationItem.addClass(settings.currentClass);
 				
+			});
+			
+			$container.find('.next').bind('click',function(){
+				var $navigationItems  = getNavigationItems( $container, settings.navigationContainerClass, settings.navigationItemClass );
+				var next = navigationOffest+settings.countNavigationItems+1;
+				var max = $navigationItems.length;
+				if( next <= max ) {
+					$navigationItems.eq( navigationOffest ).hide();
+					$navigationItems.eq( navigationOffest + settings.countNavigationItems).show();
+					navigationOffest = navigationOffest+1;
+				}
+			});
+			$container.find('.prev').bind('click',function(){
+				if( navigationOffest > 0 ) {
+					var $navigationItems  = getNavigationItems( $container, settings.navigationContainerClass, settings.navigationItemClass );
+					$navigationItems.eq( navigationOffest - 1 ).show();
+					$navigationItems.eq( navigationOffest + settings.countNavigationItems -1).hide();
+					navigationOffest = navigationOffest-1;
+					if( navigationOffest < 0 ) navigationOffest = 0;
+				}
+	
 			});
 			
 			// api
