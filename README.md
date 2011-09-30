@@ -22,18 +22,14 @@
 	display:block;
 }
 
-.pages .navigation .nav {
-
-}
-
-.pages .navigation .nav .current {
-	border : 1px solid red;
-}
-
 .pages .navigation .nav{
 	float:left;
 	width:30px;
 	height:30px;
+}
+
+.pages .navigation .nav .current {
+	border : 1px solid red;
 }
 ```
 
