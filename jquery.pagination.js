@@ -48,7 +48,7 @@
 		display:none;
 	}
 	
-	.pages .items .item .current{
+	.pages .items .item.current{
 		display:block;
 	}
 	
@@ -75,7 +75,6 @@
 		})
 	})(jQuery);
 */
-"use strict";
 "use strict";
 (function($){
 
@@ -173,7 +172,7 @@
 			$navigationItems.live('click', function(event){
 				event.preventDefault();
 				var $navigationItem = $(this);
-				var position = $navigationItem.index();
+				var position = $navigationItem.index() -1;
 				
 				var $pageItems  = getPagesItems( $container, settings.itemsContainerClass, settings.itemClass );
 				var $navigationItems  = getNavigationItems( $container, settings.navigationContainerClass, settings.navigationItemClass );
@@ -183,9 +182,9 @@
 				var endIndex = ( position == 0  ) ? ( settings.countOnPage - 1 ) : ( position * settings.countOnPage + ( settings.countOnPage - 1 ) );
 
 				var startIndex = ( position == 0  ) ? 0 : ( position * settings.countOnPage  );
-				// console.info(startIndex, endIndex)
+				// console.info(position,startIndex, endIndex)
 				for( var i = startIndex; i<=endIndex; i++){
-					$pageItems.eq(i-1).addClass(settings.currentClass);
+					$pageItems.eq(i).addClass(settings.currentClass);
 				}
 				
 				$navigationItems.filter( '.'+settings.currentClass).removeClass(settings.currentClass);
